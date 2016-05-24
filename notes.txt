@@ -1,0 +1,18 @@
+Tic-Tac-Toe
+
+3 Main Modules
+- GUI
+- Control
+- Network
+
+GUI
+- Input
+- Rendering
+
+Control
+- State tracking
+
+Network
+- Listen or connect mode
+- Talk via ICMP :) (SCAPY)
+
