@@ -1,5 +1,6 @@
 import os, sys
 import pygame
+import icmpcomm
 
 WHITE=(255,255,255)
 ORANGE=(214,137,16)
@@ -7,6 +8,9 @@ ORANGE=(214,137,16)
 print("Starting pygame...")
 pygame.display.init()
 screen = pygame.display.set_mode((640, 340))
+
+comm = icmpcomm.MonitorThread()
+comm.start()
 
 gameActive = True
 while gameActive: 
@@ -17,8 +21,9 @@ while gameActive:
     if event.type == pygame.QUIT:
       print("Got quit! Returning...")
       gameActive = False
-  pygame.display.flip ()     
+  pygame.display.flip()
 
+comm.abort = True
 print("Quitting pygame...")
 pygame.display.quit()
 
