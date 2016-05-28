@@ -13,16 +13,16 @@ screensize = (640, 340)
 screen = pygame.display.set_mode(screensize)
 
 #Display text on the screen
-font = pygame.font.SysFont(None, 48)
-text = font.render("Hello World!", True, RED, WHITE)
-textrect = text.get_rect()
+font = pygame.font.SysFont(None, 40)
+text = font.render("Hello World!", True, RED)
+textrect = [150, 150]
 
 comm = icmpcomm.MonitorThread()
 comm.start()
 
 gameActive = True
 while gameActive: 
-
+  #display boxes for foxes
   pygame.draw.rect(screen, ORANGE, [150, 150, 200, 100])
   pygame.draw.rect(screen, ORANGE, [150, 30, 200, 100])
   screen.blit(text, textrect)
