@@ -14,8 +14,13 @@ screen = pygame.display.set_mode(screensize)
 
 #Display text on the screen
 font = pygame.font.SysFont(None, 40)
-text = font.render("Hello World!", True, RED)
+text = font.render("Quit", True, RED)
 textrect = [150, 150]
+
+#extra text for the screen
+font1 = pygame.font.SysFont(None, 40)
+text1 = font.render("Start", True, RED)
+textrect1 = [150, 30]
 
 comm = icmpcomm.MonitorThread()
 comm.start()
@@ -26,6 +31,7 @@ while gameActive:
   pygame.draw.rect(screen, ORANGE, [150, 150, 200, 100])
   pygame.draw.rect(screen, ORANGE, [150, 30, 200, 100])
   screen.blit(text, textrect)
+  screen.blit(text1, textrect1)
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
       print("Got quit! Returning...")
