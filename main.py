@@ -2,10 +2,12 @@ import os, sys
 import pygame
 import icmpcomm
 
+# Global color values
 WHITE=(255,255,255)
 ORANGE=(214,137,16)
 RED=(255, 0, 0)
-# We need more comments!
+
+# Initialize pygame subsystems and the screen
 print("Starting pygame...")
 pygame.display.init()
 pygame.font.init()
@@ -18,13 +20,14 @@ text = font.render("Quit", True, RED)
 textrect = [150, 150]
 
 #extra text for the screen
-font1 = pygame.font.SysFont(None, 40)
 text1 = font.render("Start", True, RED)
 textrect1 = [150, 30]
 
+# Start ICMP monitor thread
 comm = icmpcomm.MonitorThread()
 comm.start()
 
+# Start main loop
 gameActive = True
 while gameActive: 
   #display boxes for foxes
@@ -38,13 +41,8 @@ while gameActive:
       gameActive = False
   pygame.display.flip()
 
+# Main loop has finished, so stop the pygame subsystems and tell the comm thread to abort
 comm.abort = True
 print("Quitting pygame...")
 pygame.display.quit()
 pygame.font.quit()
-
-
-
-
-
-#more comments
