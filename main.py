@@ -2,6 +2,7 @@ import os, sys
 import pygame
 from pygame.locals import *
 
+# We need more comments!
 print("Starting pygame...")
 pygame.display.init()
 screen = pygame.display.set_mode((640, 480))
@@ -15,3 +16,4 @@ while gameActive:
 
 print("Quitting pygame...")
 pygame.display.quit()
+
