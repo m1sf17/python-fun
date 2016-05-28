@@ -1,17 +1,21 @@
 import os, sys
-import pygame
-from pygame.locals import *
+import pygame, pgu
+from pgu import gui
 
-print("Starting pygame...")
-pygame.display.init()
-screen = pygame.display.set_mode((640, 480))
+app = gui.App()
+e = gui.Button("This is a test button!")
+quitBtn = gui.Button("Quit")
+labelColor = (255,255,255)
 
-gameActive = True
-while gameActive:
-  for event in pygame.event.get():
-    if event.type == pygame.QUIT:
-      print("Got quit! Returning...")
-      gameActive = False
+mainTable = gui.Table()
 
-print("Quitting pygame...")
-pygame.display.quit()
+mainTable.tr()
+mainTable.td(gui.Label("Tic-Tac-Toe", color=labelColor))
+mainTable.tr()
+mainTable.td(e)
+mainTable.tr()
+mainTable.td(quitBtn)
+
+quitBtn.connect(gui.CLICK, app.quit)
+app.connect(gui.QUIT, app.quit)
+app.run(mainTable)
