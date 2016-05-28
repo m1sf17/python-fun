@@ -14,7 +14,6 @@ comm.start()
 
 gameActive = True
 while gameActive: 
-init() -> None
 
   pygame.draw.rect(screen, ORANGE, [150, 150, 200, 100])
   pygame.draw.rect(screen, ORANGE, [150, 30, 200, 100])
