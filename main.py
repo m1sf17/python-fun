@@ -14,9 +14,10 @@ comm.start()
 
 gameActive = True
 while gameActive: 
+init() -> None
 
-  pygame.draw.rect(screen, WHITE, [150, 150, 200, 100], 2)
-  pygame.draw.rect(screen, ORANGE, [150, 30, 200, 100], 2)
+  pygame.draw.rect(screen, ORANGE, [150, 150, 200, 100])
+  pygame.draw.rect(screen, ORANGE, [150, 30, 200, 100])
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
       print("Got quit! Returning...")
@@ -27,3 +28,6 @@ comm.abort = True
 print("Quitting pygame...")
 pygame.display.quit()
 
+
+
+#more comments
