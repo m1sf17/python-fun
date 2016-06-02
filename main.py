@@ -11,17 +11,18 @@ RED=(255, 0, 0)
 print("Starting pygame...")
 pygame.display.init()
 pygame.font.init()
-screensize = (640, 340)
+screensize = (500, 340)
 screen = pygame.display.set_mode(screensize)
 
 #Display text on the screen
 font = pygame.font.SysFont(None, 40)
 text = font.render("Quit", True, RED)
-textrect = [150, 150]
+textrect = [220, 190]
 
 #extra text for the screen
+font = pygame.font.SysFont(None, 40)
 text1 = font.render("Start", True, RED)
-textrect1 = [150, 30]
+textrect1 = [215, 65]
 
 # Start ICMP monitor thread
 comm = icmpcomm.MonitorThread()
