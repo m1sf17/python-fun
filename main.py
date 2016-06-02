@@ -2,6 +2,18 @@ import os, sys
 import pygame
 import icmpcomm
 
+class Button:
+  font = None
+  screen = None
+  def __init__(self, txt, dimensions, textRect):
+    self.txt = txt
+    self.dimensions = dimensions
+    self.renderedText = Button.font.render(txt, True, RED)
+    self.textRect = textRect
+  def render(self):
+    pygame.draw.rect(Button.screen, ORANGE, self.dimensions)
+    screen.blit(self.renderedText, self.textRect)
+
 # Global variables
 MOUSE_LEFT_BUTTON = 1
 MOUSE_MIDDLE_BUTTON = 2
@@ -19,26 +31,33 @@ pygame.font.init()
 screensize = (500, 340)
 screen = pygame.display.set_mode(screensize)
 
+Button.font = pygame.font.SysFont(None, 40)
+Button.screen = screen
+
+quitBtn = Button("Quit", [150, 150, 200, 100], [220, 190])
+startBtn = Button("Start", [150, 30, 200, 100], [215, 65])
+
+hostMatchBtn = Button("Host a Match", [150, 150, 200, 100], [220, 190])
+findMatchBtn = Button("Find a Match", [150, 30, 200, 100], [215, 65])
 #Display text on the screen
-font = pygame.font.SysFont(None, 40)
-text = font.render("Quit", True, RED)
-textrect = [220, 190]
+#font = pygame.font.SysFont(None, 40)
+#text = font.render("Quit", True, RED)
+#textrect = [220, 190]
 
 #extra text for the screen
-font = pygame.font.SysFont(None, 40)
-text1 = font.render("Start", True, RED)
-textrect1 = [215, 65]
+#font = pygame.font.SysFont(None, 40)
+#text1 = font.render("Start", True, RED)
+#textrect1 = [215, 65]
 
 #more text
-font = pygame.font.SysFont(None, 40)
-text2 = font.render("Find a match", True, RED)
-textrect2 = [215, 65]
+#font = pygame.font.SysFont(None, 40)
+#text2 = font.render("Find a match", True, RED)
+#textrect2 = [215, 65]
 
 #additional text
-font = pygame.font.SysFont(None, 40)
-text3 = font.render("Host a match", True, RED)
-textrect3 = [220, 190]
-
+#font = pygame.font.SysFont(None, 40)
+#text3 = font.render("Host a match", True, RED)
+#textrect3 = [220, 190]
 
 
 # Start ICMP monitor thread
@@ -56,15 +75,19 @@ currentscreen = 0
 while gameActive:
   if currentscreen == 0:
     #display boxes for foxes
-    pygame.draw.rect(screen, ORANGE, [150, 150, 200, 100])
-    pygame.draw.rect(screen, ORANGE, [150, 30, 200, 100])
-    screen.blit(text, textrect)
-    screen.blit(text1, textrect1)
+    #pygame.draw.rect(screen, ORANGE, [150, 150, 200, 100])
+    #pygame.draw.rect(screen, ORANGE, [150, 30, 200, 100])
+    #screen.blit(text, textrect)
+    #screen.blit(text1, textrect1)
+    quitBtn.render()
+    startBtn.render()
   if currentscreen == 1:
-    pygame.draw.rect(screen, ORANGE, [150, 150, 200, 100])
-    pygame.draw.rect(screen, ORANGE, [150, 30, 200, 100])
-    screen.blit(text2, textrect2)
-    screen.blit(text3, textrect3)
+    #pygame.draw.rect(screen, ORANGE, [150, 150, 200, 100])
+    #pygame.draw.rect(screen, ORANGE, [150, 30, 200, 100])
+    #screen.blit(text2, textrect2)
+    #screen.blit(text3, textrect3)
+    hostMatchBtn.render()
+    findMatchBtn.render()
 
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
