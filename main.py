@@ -23,7 +23,7 @@ screen = pygame.display.set_mode(screensize)
 font = pygame.font.SysFont(None, 40)
 text = font.render("Quit", True, RED)
 textrect = [220, 190]
-#e
+
 #extra text for the screen
 font = pygame.font.SysFont(None, 40)
 text1 = font.render("Start", True, RED)
