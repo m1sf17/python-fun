@@ -23,7 +23,7 @@ screen = pygame.display.set_mode(screensize)
 font = pygame.font.SysFont(None, 40)
 text = font.render("Quit", True, RED)
 textrect = [220, 190]
-#e
+
 #extra text for the screen
 font = pygame.font.SysFont(None, 40)
 text1 = font.render("Start", True, RED)
@@ -32,28 +32,36 @@ textrect1 = [215, 65]
 # Start ICMP monitor thread
 comm = icmpcomm.MonitorThread()
 comm.start()
-#e
+
+#Start game loop
+#A=connect to somebody
+#B=Host the game
+  
+
 # Start main loop
 gameActive = True
-while gameActive: 
-  #display boxes for foxes
-  pygame.draw.rect(screen, ORANGE, [150, 150, 200, 100])
-  pygame.draw.rect(screen, ORANGE, [150, 30, 200, 100])
-  screen.blit(text, textrect)
-  screen.blit(text1, textrect1)
+currentscreen = 0
+while gameActive:
+  if currentscreen == 0:
+    #display boxes for foxes
+    pygame.draw.rect(screen, ORANGE, [150, 150, 200, 100])
+    pygame.draw.rect(screen, ORANGE, [150, 30, 200, 100])
+    screen.blit(text, textrect)
+    screen.blit(text1, textrect1)
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
       print("Got quit! Returning...")
       gameActive = False
     if event.type == pygame.MOUSEBUTTONDOWN:
       print("Got mouse button!", event)
-      if pygame.Rect([150,150,200,100]).collidepoint(event.pos):
-        if event.button == MOUSE_LEFT_BUTTON:
-          print("Clicked left button inside quit!")
-          gameActive = False 
-      if pygame.Rect([150,30,200,100]).collidepoint(event.pos):
-        if event.button == MOUSE_LEFT_BUTTON:
-          print("I'm suposed to start the game") 
+      if currentscreen == 0:
+        if pygame.Rect([150,150,200,100]).collidepoint(event.pos):
+          if event.button == MOUSE_LEFT_BUTTON:
+            print("Clicked left button inside quit!")
+            gameActive = False 
+        if pygame.Rect([150,30,200,100]).collidepoint(event.pos):
+          if event.button == MOUSE_LEFT_BUTTON:
+            print("I'm suposed to start the game") 
   pygame.display.flip()
 
 # Main loop has finished, so stop the pygame subsystems and tell the comm thread to abort
