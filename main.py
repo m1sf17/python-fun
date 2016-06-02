@@ -28,7 +28,19 @@ textrect = [220, 190]
 font = pygame.font.SysFont(None, 40)
 text1 = font.render("Start", True, RED)
 textrect1 = [215, 65]
-#e
+
+#more text
+font = pygame.font.SysFont(None, 40)
+text2 = font.render("Find a match", True, RED)
+textrect2 = [215, 65]
+
+#additional text
+font = pygame.font.SysFont(None, 40)
+text3 = font.render("Host a match", True, RED)
+textrect3 = [220, 190]
+
+
+
 # Start ICMP monitor thread
 comm = icmpcomm.MonitorThread()
 comm.start()
@@ -48,6 +60,12 @@ while gameActive:
     pygame.draw.rect(screen, ORANGE, [150, 30, 200, 100])
     screen.blit(text, textrect)
     screen.blit(text1, textrect1)
+  if currentscreen == 1:
+    pygame.draw.rect(screen, ORANGE, [150, 150, 200, 100])
+    pygame.draw.rect(screen, ORANGE, [150, 30, 200, 100])
+    screen.blit(text2, textrect2)
+    screen.blit(text3, textrect3)
+
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
       print("Got quit! Returning...")
@@ -61,7 +79,8 @@ while gameActive:
             gameActive = False 
         if pygame.Rect([150,30,200,100]).collidepoint(event.pos):
           if event.button == MOUSE_LEFT_BUTTON:
-            print("I'm suposed to start the game") 
+            print("I'm suposed to start the game")
+            currentscreen = 1
   pygame.display.flip()
 
 # Main loop has finished, so stop the pygame subsystems and tell the comm thread to abort
@@ -69,7 +88,3 @@ comm.abort = True
 print("Quitting pygame...")
 pygame.display.quit()
 pygame.font.quit()
-#e
-#e
-#e
-#e
