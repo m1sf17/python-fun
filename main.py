@@ -23,7 +23,7 @@ screen = pygame.display.set_mode(screensize)
 font = pygame.font.SysFont(None, 40)
 text = font.render("Quit", True, RED)
 textrect = [220, 190]
-
+#e
 #extra text for the screen
 font = pygame.font.SysFont(None, 40)
 text1 = font.render("Start", True, RED)
@@ -50,6 +50,10 @@ while gameActive:
       if pygame.Rect([150,150,200,100]).collidepoint(event.pos):
         if event.button == MOUSE_LEFT_BUTTON:
           print("Clicked left button inside quit!")
+          gameActive = False 
+      if pygame.Rect([150,30,200,100]).collidepoint(event.pos):
+        if event.button == MOUSE_LEFT_BUTTON:
+          print("I'm suposed to start the game") 
   pygame.display.flip()
 
 # Main loop has finished, so stop the pygame subsystems and tell the comm thread to abort
