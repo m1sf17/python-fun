@@ -2,6 +2,11 @@ import os, sys
 import pygame
 import icmpcomm
 
+# Global variables
+MOUSE_LEFT_BUTTON = 1
+MOUSE_MIDDLE_BUTTON = 2
+MOUSE_RIGHT_BUTTON = 3
+
 # Global color values
 WHITE=(255,255,255)
 ORANGE=(214,137,16)
@@ -40,6 +45,11 @@ while gameActive:
     if event.type == pygame.QUIT:
       print("Got quit! Returning...")
       gameActive = False
+    if event.type == pygame.MOUSEBUTTONDOWN:
+      print("Got mouse button!", event)
+      if pygame.Rect([150,150,200,100]).collidepoint(event.pos):
+        if event.button == MOUSE_LEFT_BUTTON:
+          print("Clicked left button inside quit!")
   pygame.display.flip()
 
 # Main loop has finished, so stop the pygame subsystems and tell the comm thread to abort
