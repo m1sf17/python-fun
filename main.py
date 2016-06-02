@@ -28,11 +28,11 @@ textrect = [220, 190]
 font = pygame.font.SysFont(None, 40)
 text1 = font.render("Start", True, RED)
 textrect1 = [215, 65]
-
+#e
 # Start ICMP monitor thread
 comm = icmpcomm.MonitorThread()
 comm.start()
-
+#e
 # Start main loop
 gameActive = True
 while gameActive: 
@@ -61,3 +61,7 @@ comm.abort = True
 print("Quitting pygame...")
 pygame.display.quit()
 pygame.font.quit()
+#e
+#e
+#e
+#e
