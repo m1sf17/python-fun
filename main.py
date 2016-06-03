@@ -23,6 +23,7 @@ MOUSE_RIGHT_BUTTON = 3
 WHITE=(255,255,255)
 ORANGE=(214,137,16)
 RED=(255, 0, 0)
+BLACK=(0,0,0)
 
 # Initialize pygame subsystems and the screen
 print("Starting pygame...")
@@ -67,7 +68,7 @@ comm.start()
 #Start game loop
 #A=connect to somebody
 #B=Host the game
-  
+
 
 # Start main loop
 gameActive = True
@@ -104,6 +105,7 @@ while gameActive:
           if event.button == MOUSE_LEFT_BUTTON:
             print("I'm suposed to start the game")
             currentscreen = 1
+            screen.fill(BLACK)
   pygame.display.flip()
 
 # Main loop has finished, so stop the pygame subsystems and tell the comm thread to abort
